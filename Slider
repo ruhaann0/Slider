@@ -1,0 +1,65 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(ColorSliderApp());
+}
+
+class ColorSliderApp extends StatefulWidget {
+  @override
+  _ColorSliderAppState createState() => _ColorSliderAppState();
+}
+
+class _ColorSliderAppState extends State<ColorSliderApp> {
+  double red = 0;
+  double green = 0;
+  double blue = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          color: Color.fromRGBO(red.toInt(), green.toInt(), blue.toInt(), 1),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Red: ${red.toInt()}"),
+              Slider(
+                value: red,
+                min: 0,
+                max: 255,
+                onChanged: (value) {
+                  setState(() {
+                    red = value;
+                  });
+                },
+              ),
+              Text("Green: ${green.toInt()}"),
+              Slider(
+                value: green,
+                min: 0,
+                max: 255,
+                onChanged: (value) {
+                  setState(() {
+                    green = value;
+                  });
+                },
+              ),
+              Text("Blue: ${blue.toInt()}"),
+              Slider(
+                value: blue,
+                min: 0,
+                max: 255,
+                onChanged: (value) {
+                  setState(() {
+                    blue = value;
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
